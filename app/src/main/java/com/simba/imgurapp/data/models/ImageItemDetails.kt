@@ -1,10 +1,27 @@
 package com.simba.imgurapp.data.models
 
-import android.graphics.drawable.Drawable
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 data class ImageItemDetails(
-    val image: Int,
-    val title: String,
-    val postedAt: String,
-    val additionalImages: Int? = null
+
+    @SerializedName("id")
+    @Expose
+    val id: String? = null,
+
+    @SerializedName("link")
+    @Expose
+    val image: String? = null,
+
+    @SerializedName("title")
+    @Expose
+    val title: String? = null,
+
+    @SerializedName("datetime")
+    @Expose
+    val postedAt: Int? = null,
+
+    @SerializedName("images")
+    @Expose
+    val additionalImages: List<ImageItemDetails>? = null
 )

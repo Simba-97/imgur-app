@@ -23,19 +23,19 @@ class ImageSearchFragment : Fragment() {
     private var isLinearLayoutManager = true
 
     private val list: List<ImageItemDetails> = mutableListOf(
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
+//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

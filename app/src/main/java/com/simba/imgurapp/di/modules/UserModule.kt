@@ -4,7 +4,12 @@ import android.app.Application
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.simba.imgurapp.data.DefaultUserRemoteDataSource
 import com.simba.imgurapp.data.UserApiService
+import com.simba.imgurapp.data.UserRemoteDataSource
+import com.simba.imgurapp.data.models.DefaultUserRepository
+import com.simba.imgurapp.data.models.UserRepository
+import com.simba.imgurapp.utils.ApiEndpoint
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -73,9 +78,23 @@ class UserModule {
     @Singleton
     fun provideUserApi(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("baseUrl.com")
+            .baseUrl(ApiEndpoint.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
+    }
+
+    @Provides
+    fun provideUserRemoteDataSource(userApiService: UserApiService): UserRemoteDataSource {
+        return DefaultUserRemoteDataSource(userApiService)
+    }
+
+    @Provides
+    fun provideUserRepository(
+        remoteDataSource: UserRemoteDataSource,
+    ): UserRepository {
+        return DefaultUserRepository(
+            remoteDataSource
+        )
     }
 }

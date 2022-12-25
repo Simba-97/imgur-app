@@ -21,10 +21,10 @@ class ImageSearchAdapter(private var list: List<ImageItemDetails>) :
     override fun onBindViewHolder(holder: ImageSearchViewHolder, position: Int) {
         with(holder) {
             with(list[position]) {
-                binding.ivImage.setImageResource(this.image)
-                binding.valAdditionalImages.text = this.additionalImages.toString()
-                binding.title.text = this.title
-                binding.postedAt.text = this.postedAt
+//                binding.ivImage.setImageResource(this.image)
+//                binding.valAdditionalImages.text = this.additionalImages.toString()
+//                binding.title.text = this.title
+//                binding.postedAt.text = this.postedAt
             }
         }
     }
