@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.simba.imgurapp.BuildConfig
 import com.simba.imgurapp.data.DefaultUserRemoteDataSource
 import com.simba.imgurapp.data.UserApiService
 import com.simba.imgurapp.data.UserRemoteDataSource
@@ -45,6 +46,7 @@ class UserModule {
         return Interceptor { chain ->
             val request: Request = chain.request()
             val newRequest = request.newBuilder()
+                .addHeader("Authorization", "Client-ID ${BuildConfig.CLIENT_ID}")
                 .build()
             chain.proceed(newRequest)
         }

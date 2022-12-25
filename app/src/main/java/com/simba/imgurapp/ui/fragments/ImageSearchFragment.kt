@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +13,11 @@ import com.simba.imgurapp.R
 import com.simba.imgurapp.data.models.ImageItemDetails
 import com.simba.imgurapp.databinding.LayoutImageSearchBinding
 import com.simba.imgurapp.ui.adapters.ImageSearchAdapter
+import com.simba.imgurapp.ui.viewmodels.UserSearchEvent
+import com.simba.imgurapp.ui.viewmodels.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ImageSearchFragment : Fragment() {
 
     private var _binding: LayoutImageSearchBinding? = null
@@ -20,23 +26,12 @@ class ImageSearchFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
+    //Injecting the viewModel
+    private val userViewModel: UserViewModel by viewModels()
+
     private var isLinearLayoutManager = true
 
-    private val list: List<ImageItemDetails> = mutableListOf(
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-//        ImageItemDetails(R.drawable.download, "Android", "02/03/01 12:00 am", 3),
-    )
+    private var list: List<ImageItemDetails>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +49,22 @@ class ImageSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        userViewModel.onTriggerEvent(
+            UserSearchEvent.SearchImagesByWeek(
+                "cats"
+            )
+        )
         recyclerView = binding.recyclerView
+        subscriberObserver()
+    }
 
-        chooseLayout()
+    private fun subscriberObserver() {
+        userViewModel.uiState.asLiveData().observe(viewLifecycleOwner) { uiState ->
+            if (uiState.status == 200) {
+                list = uiState.data
+                chooseLayout(uiState.data)
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -65,13 +73,13 @@ class ImageSearchFragment : Fragment() {
     }
 
     //toggles the layout between linear and grid layout.
-    private fun chooseLayout() {
+    private fun chooseLayout(list: List<ImageItemDetails>?) {
         if (isLinearLayoutManager) {
             recyclerView.layoutManager = LinearLayoutManager(context)
         } else {
             recyclerView.layoutManager = GridLayoutManager(context, 3)
         }
-        recyclerView.adapter = ImageSearchAdapter(list)
+        recyclerView.adapter = list?.let { ImageSearchAdapter(it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -98,7 +106,7 @@ class ImageSearchFragment : Fragment() {
                 // Sets isLinearLayoutManager to the opposite value
                 isLinearLayoutManager = !isLinearLayoutManager
                 // Sets layout and icon. Refer to the function to the see what it does
-                chooseLayout()
+                chooseLayout(list)
                 setIcon(item)
 
                 return true

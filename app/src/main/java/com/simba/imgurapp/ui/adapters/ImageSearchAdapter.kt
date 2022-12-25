@@ -1,11 +1,11 @@
 package com.simba.imgurapp.ui.adapters
 
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.simba.imgurapp.data.models.ImageItemDetails
 import com.simba.imgurapp.databinding.ItemImageBinding
+import com.simba.imgurapp.utils.BindingUtils
 
 class ImageSearchAdapter(private var list: List<ImageItemDetails>) :
     RecyclerView.Adapter<ImageSearchAdapter.ImageSearchViewHolder>() {
@@ -21,10 +21,10 @@ class ImageSearchAdapter(private var list: List<ImageItemDetails>) :
     override fun onBindViewHolder(holder: ImageSearchViewHolder, position: Int) {
         with(holder) {
             with(list[position]) {
-//                binding.ivImage.setImageResource(this.image)
-//                binding.valAdditionalImages.text = this.additionalImages.toString()
-//                binding.title.text = this.title
-//                binding.postedAt.text = this.postedAt
+                BindingUtils.loadAndBindImage(binding.ivImage, this.additionalImages?.get(0)?.image)
+                binding.valAdditionalImages.text = this.additionalImages?.size.toString()
+                binding.title.text = this.title
+                binding.postedAt.text = this.postedAt.toString()
             }
         }
     }
