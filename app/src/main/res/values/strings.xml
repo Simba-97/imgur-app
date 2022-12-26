@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Imgur App</string>
+    <string name="oops_no_images_found">Oops! No images found:(</string>
+    <string name="additional_images">Additional Images:</string>
 </resources>

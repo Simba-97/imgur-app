@@ -2,6 +2,7 @@ package com.simba.imgurapp.data
 
 import com.simba.imgurapp.data.models.ImageSearchResponse
 
+//Remote Data source layer
 interface UserRemoteDataSource {
     suspend fun getImagesWeekly(queryString: String): ImageSearchResponse
 }

@@ -1,7 +1,9 @@
 package com.simba.imgurapp.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -9,6 +11,7 @@ import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.simba.imgurapp.R
 import com.simba.imgurapp.data.models.ImageItemDetails
 import com.simba.imgurapp.databinding.LayoutImageSearchBinding
@@ -49,11 +52,31 @@ class ImageSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //The images of cats is loaded on app startup
         userViewModel.onTriggerEvent(
             UserSearchEvent.SearchImagesByWeek(
                 "cats"
             )
         )
+
+        //The user can search for images from any category with the help of this search View.
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    userViewModel.onTriggerEvent(
+                        UserSearchEvent.SearchImagesByWeek(
+                            query
+                        )
+                    )
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+        })
         recyclerView = binding.recyclerView
         subscriberObserver()
     }
@@ -79,7 +102,18 @@ class ImageSearchFragment : Fragment() {
         } else {
             recyclerView.layoutManager = GridLayoutManager(context, 3)
         }
-        recyclerView.adapter = list?.let { ImageSearchAdapter(it) }
+        if (list != null) {
+
+            //Show a text view telling now images were found if no data was found
+            if (list.isNotEmpty()) {
+                recyclerView.adapter = ImageSearchAdapter(list)
+                recyclerView.visibility = View.VISIBLE
+                binding.textView.visibility = View.GONE
+            } else {
+                binding.textView.visibility = View.VISIBLE
+                recyclerView.visibility = View.GONE
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -46,7 +46,7 @@ class UserModule {
         return Interceptor { chain ->
             val request: Request = chain.request()
             val newRequest = request.newBuilder()
-                .addHeader("Authorization", "Client-ID ${BuildConfig.CLIENT_ID}")
+                .addHeader("Authorization", "Client-ID ${BuildConfig.CLIENT_ID}") //Replace you CLIENT_ID here.
                 .build()
             chain.proceed(newRequest)
         }

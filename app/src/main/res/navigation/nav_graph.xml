@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/imageSearchFragment">
+    app:startDestination="@id/imgurApp">
 
     <fragment
-        android:id="@+id/imageSearchFragment"
+        android:id="@+id/imgurApp"
         android:name="com.simba.imgurapp.ui.fragments.ImageSearchFragment"
-        android:label="ImageSearchFragment" />
+        android:label="Imgur App" />
 </navigation>

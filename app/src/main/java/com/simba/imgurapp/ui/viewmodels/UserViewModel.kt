@@ -12,6 +12,8 @@ import kotlinx.coroutines.launch
 import com.simba.imgurapp.utils.*
 import javax.inject.Inject
 
+//ViewModel of the MVVM architecture
+//Define all lifecycle aware ui related functions here.
 @HiltViewModel
 class UserViewModel @Inject constructor(
     private val searchImagesByWeeklyUseCase: SearchImagesByWeeklyUseCase
