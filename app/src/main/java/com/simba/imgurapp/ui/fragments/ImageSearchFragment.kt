@@ -1,7 +1,6 @@
 package com.simba.imgurapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import androidx.core.content.ContextCompat
@@ -11,13 +10,13 @@ import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import com.simba.imgurapp.R
 import com.simba.imgurapp.data.models.ImageItemDetails
 import com.simba.imgurapp.databinding.LayoutImageSearchBinding
 import com.simba.imgurapp.ui.adapters.ImageSearchAdapter
 import com.simba.imgurapp.ui.viewmodels.UserSearchEvent
 import com.simba.imgurapp.ui.viewmodels.UserViewModel
+import com.simba.imgurapp.utils.showProgressBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -86,6 +85,10 @@ class ImageSearchFragment : Fragment() {
             if (uiState.status == 200) {
                 list = uiState.data
                 chooseLayout(uiState.data)
+            }
+
+            uiState.isDataLoading.let {
+                binding.progressView.showProgressBar(it)
             }
         }
     }

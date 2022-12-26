@@ -1,6 +1,8 @@
 package com.simba.imgurapp.utils
 
 import android.app.Activity
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 
 fun Activity.isNetworkConnected(): Boolean {
@@ -13,4 +15,8 @@ fun Activity.isNetworkConnected(): Boolean {
         ).show()
         false
     }
+}
+
+fun ProgressBar.showProgressBar(isToShow: Boolean) {
+    visibility = if (isToShow) View.VISIBLE else View.GONE
 }
