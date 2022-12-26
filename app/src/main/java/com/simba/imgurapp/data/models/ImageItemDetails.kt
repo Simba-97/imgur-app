@@ -19,7 +19,7 @@ data class ImageItemDetails(
 
     @SerializedName("datetime")
     @Expose
-    val postedAt: Int? = null,
+    val postedAt: Long? = null,
 
     @SerializedName("images")
     @Expose
