@@ -1,7 +1,7 @@
 <div align="center" style="text-align:center">
 <br>
 
-### Imgur App
+# Imgur App
 
 <p> A simple android app written in Kotlin to search and view top weekly images from the Imgur API.<br></p>
 
@@ -9,7 +9,7 @@
 
 </div>
 
-# Imgur App
+## Imgur App
 An Android App for search and viewing top weekly images from the imgur API, the application is built to show the use of MVVM clean architecture along with different architecture components in Android along with best practices.
 
 ## **Problem Statement**
@@ -30,6 +30,13 @@ Following are few android concepts used to achieve the functionalities in app :
 - `Recyclerview` :  To present the list of different images we used the efficient <b>Recyclerview</b>. 
 - `LiveData` : We are also using <b>LiveData</b> to update & observe any changes to the response we receive from the Imgur API
 - `Navigation Component` : We are also using the <b>Navigation component</b> to switch pages/destination within the app.
+
+## **Screenshots**
+### **Light**
+<img width="200" height="433" src="./assets/images/ss1_light.jpg"> <img width="200" height="433" src="./assets/images/ss2_light.jpg"> <img width="200" height="433" src="./assets/images/ss3_light.jpg"><img width="200" height="433" src="./assets/images/ss4_dark.jpg">
+<img width="200" height="433" src="./assets/images/ss5_light.jpg"> 
+### **Dark**
+<img width="200" height="433" src="./assets/images/ss1_dark.jpg"> <img width="200" height="433" src="./assets/images/ss2_dark.jpg"> <img width="200" height="433" src="./assets/images/ss3_dark.jpg"> <img width="200" height="433" src="./assets/images/ss5_dark.jpg">
 
 ## **Application Link & Future Scope**
 
