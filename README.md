@@ -32,12 +32,16 @@ Following are few android concepts used to achieve the functionalities in app :
 - `Navigation Component` : We are also using the <b>Navigation component</b> to switch pages/destination within the app.
 
 ## **Screenshots**
-### **Light**
-<img width="200" height="433" src="./assets/images/ss1_light.jpg"> <img width="200" height="433" src="./assets/images/ss2_light.jpg"> <img width="200" height="433" src="./assets/images/ss3_light.jpg"><img width="200" height="433" src="./assets/images/ss4_dark.jpg">
-<img width="200" height="433" src="./assets/images/ss5_light.jpg"> 
-### **Dark**
-<img width="200" height="433" src="./assets/images/ss1_dark.jpg"> <img width="200" height="433" src="./assets/images/ss2_dark.jpg"> <img width="200" height="433" src="./assets/images/ss3_dark.jpg"> <img width="200" height="433" src="./assets/images/ss5_dark.jpg">
+### **Light(List)**
+<img width="200" height="433" src="./assets/images/ss5_light.jpg"> <img width="200" height="433" src="./assets/images/ss2_light.jpg">
 
+### **Light(Grid)**
+<img width="200" height="433" src="./assets/images/ss4_dark.jpg"> <img width="200" height="433" src="./assets/images/ss1_light.jpg">
+
+### **Dark(List)**
+<img width="200" height="433" src="./assets/images/ss3_dark.jpg"> <img width="200" height="433" src="./assets/images/ss2_dark.jpg"> 
+### **Dark(grid)**
+<img width="200" height="433" src="./assets/images/ss5_dark.jpg"> <img width="200" height="433" src="./assets/images/ss1_dark.jpg"> 
 ## **Application Link & Future Scope**
 
 The app is currently in the development phase. We plan to bring more features in the future which would make the app more interactive. You can access the `app by cloning the repo and replacing the ``CLIENT_ID``` with your client id(Please find the instructions above).
